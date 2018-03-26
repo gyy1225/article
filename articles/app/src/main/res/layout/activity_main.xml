@@ -48,7 +48,7 @@
         android:background="#f0f0f0" />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp"
+        android:id="@+id/mainvp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

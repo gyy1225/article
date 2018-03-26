@@ -9,13 +9,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 /**
  * Created by ASUS on 2018/3/24.
  */
 
-public class musicAdapter extends RecyclerView.Adapter {
+public class musicAdapter extends RecyclerView.Adapter<musicAdapter.ViewHolder> {
     private Context mContext;
     private List<music> mMusicList;
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -38,7 +40,7 @@ public class musicAdapter extends RecyclerView.Adapter {
         mMusicList=musicList;
     }
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mContext==null){
             mContext=parent.getContext();
         }
@@ -47,12 +49,20 @@ public class musicAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        music music=mMusicList.get(position);
+        //holder.musicImage.setImageResource(music.getImageId());
+        holder.musicTitle.setText(music.getTitle());
+        holder.musicAuthor.setText(music.getAuthor());
+        holder.musicReader.setText(music.getReader());
+        Glide.with(mContext).load("http://voice.meiriyiwen.com;icon-uri=http://meiriyiwen.com/favicon.ico");
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mMusicList.size();
+
     }
 }

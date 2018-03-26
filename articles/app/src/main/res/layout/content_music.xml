@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.musicActivity"
-    tools:showIn="@layout/activity_music">
+    tools:context="com.example.musicFragment"
+    tools:showIn="@layout/music_frag">
 <android.support.v7.widget.RecyclerView
     android:id="@+id/rv_music"
     android:layout_width="match_parent"

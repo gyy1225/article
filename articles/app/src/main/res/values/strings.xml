@@ -3,4 +3,5 @@
     <string name="title_activity_acticle">acticle</string>
     <string name="title_activity_music">music</string>
     <string name="title_activity_books">books</string>
+    <string name="title_activity_tablayout">TablayoutActivity</string>
 </resources>
