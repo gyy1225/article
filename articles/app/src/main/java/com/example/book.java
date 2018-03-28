@@ -14,6 +14,7 @@ public class book {
         this.imageId=imageId;
     }
 
+    public book(){}
     public String getTitle() {
         return title;
     }

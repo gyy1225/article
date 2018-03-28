@@ -1,33 +1,25 @@
 package com.example;
 
-import android.app.Activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.support.v4.view.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
 import static android.app.PendingIntent.getActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private View view1, view2, view3;
+
     private ViewPager viewPager;  //对应的viewPager
-    private List<View> viewList;//view数组
     private TabLayout tabLayout;
     private List<Fragment> fragmentList = new ArrayList<>();
 
@@ -42,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(new articleFragment());
         fragmentList.add(new musicFragment());
         fragmentList.add(new booksFragment());
-
         viewPager.setAdapter(new FragAdapter(getSupportFragmentManager(), fragmentList));
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -52,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent1=new Intent(this,historicalArticles.class);
+        Intent intent1=new Intent(this,savedArticles.class);
         startActivity(intent1);
         return true;
     }

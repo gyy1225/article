@@ -1,17 +1,69 @@
 package com.example;
 
+import org.jsoup.nodes.Document;
+import org.litepal.crud.DataSupport;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ASUS on 2018/3/25.
  */
 
-public class article {
-    String marticle;
+public class article extends DataSupport{
+    String text;
+    String author;
+    String title;
+    Document document1;
+    jsoupGet jsoupGet1;
 
-    public String getMarticle() {
-        return marticle;
+   public  article(String text,String author,String title){
+       this.text=text;
+       this.author=author;
+       this.title=title;
+   }
+   public article(){
+
+   }
+    public String getText() {
+        return text;
     }
 
-    public void setMarticle(String marticle) {
-        this.marticle = marticle;
+    public void setText(String text) {
+        this.text = text;
     }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+
+    public Document getDocument1() {
+        return document1;
+    }
+
+    public void setDocument1(Document document1) {
+        this.document1 = document1;
+    }
+
+    public jsoupGet getJsoupGet1() {
+        return jsoupGet1;
+    }
+
+    public void setJsoupGet1(jsoupGet jsoupGet1) {
+        this.jsoupGet1 = jsoupGet1;
+    }
+
 }
