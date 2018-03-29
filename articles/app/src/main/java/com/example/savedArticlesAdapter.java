@@ -35,7 +35,7 @@ public class savedArticlesAdapter extends ArrayAdapter<article> {
             article marticle=getItem(position);
             View view= LayoutInflater.from(getContext()).inflate(mresourceId,parent,false);
             savedTitle=(TextView)view.findViewById(R.id.tv_savedTitle);
-           savedAuthor=(TextView)view.findViewById(R.id.tv_savedAuthor);
+            savedAuthor=(TextView)view.findViewById(R.id.tv_savedAuthor);
             savedAuthor.setText(marticle.getAuthor());
             savedTitle.setText(marticle.getTitle());
             return view;

@@ -29,7 +29,5 @@ public class savedArticles extends AppCompatActivity {
     private void initArticles() {
         savedArticleList.clear();
         savedArticleList= DataSupport.findAll(article.class);
-
-
     }
 }

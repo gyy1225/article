@@ -83,7 +83,7 @@ public class articleFragment extends Fragment {
         AppCompatActivity mAppCompatActivity = (AppCompatActivity) mActivity;
         Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.toolbar);
         mListView=(ListView)view.findViewById(R.id.lv_article);
-        download = (Button) view.findViewById(R.id.btn_download);
+
         mAppCompatActivity.setSupportActionBar(toolbar);
         FloatingActionButton random = (FloatingActionButton) view.findViewById(R.id.random);
         random.setOnClickListener(new View.OnClickListener() {
@@ -93,17 +93,7 @@ public class articleFragment extends Fragment {
                 Toast.makeText(getActivity(), "成功刷新", Toast.LENGTH_SHORT).show();
             }
         });
-         download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    article articleSave=new article();
-                    articleSave.setTitle(currentArticle.getTitle());
-                    articleSave.setAuthor(currentArticle.getAuthor());
-                    articleSave.setText(currentArticle.getText());
-                    articleSave.save();
-                    Toast.makeText(getActivity(), "成功下载", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         if (refresh) {
             initArticle((1));
         } else {

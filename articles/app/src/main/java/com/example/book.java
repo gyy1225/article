@@ -7,11 +7,30 @@ package com.example;
 public class book {
     private String title;
     private String author;
-    private int imageId;
-    public book(String title,String author,int imageId ){
+    private String imageURL;
+    private String menuURL;
+    private String menuImageURL;
+
+    public String getMenuURL() {
+        return menuURL;
+    }
+
+    public void setMenuURL(String menuURL) {
+        this.menuURL = menuURL;
+    }
+
+    public String getMenuImageURL() {
+        return menuImageURL;
+    }
+
+    public void setMenuImageURL(String menuImageURL) {
+        this.menuImageURL = menuImageURL;
+    }
+
+    public book(String title, String author, String imageURL){
         this.title=title;
         this.author=author;
-        this.imageId=imageId;
+        this.imageURL=imageURL;
     }
 
     public book(){}
@@ -31,11 +50,11 @@ public class book {
         this.author = author;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

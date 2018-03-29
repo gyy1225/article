@@ -9,13 +9,15 @@ public class music {
     private String title;
     private String author;
     private String reader;
-    private int imageId;
-    public music(String title,String author,String reader,int imageId ){
+    private String imageURL;
+    public music(String title,String author,String reader,String imageURL){
         this.title=title;
         this.author=author;
         this.reader=reader;
-        this.imageId=imageId;
+        this.imageURL=imageURL;
     }
+
+    public music(){}
 
     public String getTitle() {
         return title;
@@ -41,11 +43,12 @@ public class music {
         this.reader = reader;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }
+

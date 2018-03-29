@@ -1,6 +1,8 @@
 package com.example;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.R;
 import java.util.ArrayList;
@@ -18,29 +21,49 @@ import java.util.List;
  */
 
 public class musicFragment extends Fragment {
-    private List<music> mmusicList=new ArrayList<>();
+    private List<music> mmusicList1 = new ArrayList<>();
     private musicAdapter mmusicAdapter;
+    private RecyclerView musicRecyclerView;
 
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    mmusicList1 = (List<music>) msg.obj;
+                    mmusicAdapter = new musicAdapter(mmusicList1);
+                    LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
+                    musicRecyclerView.setLayoutManager(layoutManager);
+                    musicRecyclerView.setAdapter(mmusicAdapter);
+                    break;
+            }
+        }
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.music_frag, container, false);
-        RecyclerView musicView=(RecyclerView)view.findViewById(R.id.rv_music);
-        musicView.setLayoutManager(new GridLayoutManager(getActivity(),1));
-       // GridLayoutManager layoutManager=new GridLayoutManager(this,1);
-        mmusicAdapter = new musicAdapter(mmusicList);
-       /* mmusicAdapter.setRecyclerItemClickListener(new OnRecyclerItemClickListener() {
-            @Override
-            public void onItemClick(int pos) {
-                mPresenter.onItemClick(pos);
-            }
-        });*/
-        musicView.setAdapter(mmusicAdapter);
-
+        View view = inflater.inflate(R.layout.music_frag, container, false);
+        musicRecyclerView  = (RecyclerView) view.findViewById(R.id.rv_music);
+        initMusics();
         return view;
     }
 
 
+    private void initMusics() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                List<music> mMusicList = new ArrayList<>();
+                jsoupGet jsoupGet4 = new jsoupGet();
+                mMusicList= jsoupGet4.getMusics();
+                Message message = new Message();
+                message.what = 1;
+                message.obj = mMusicList;
+                handler.sendMessage(message);
+            }
 
+
+        }).start();
+
+    }
 }

@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.List;
 
 /**
@@ -18,9 +21,11 @@ import java.util.List;
 
 public class bookAdapter extends ArrayAdapter<book>{
     private int resourceId;
+    Context mContext;
 
     public bookAdapter( Context context, int resource,  List<book> objects) {
         super(context, resource, objects);
+        mContext=context;
         resourceId=resource;
     }
 
@@ -31,7 +36,7 @@ public class bookAdapter extends ArrayAdapter<book>{
         ImageView bookImage=(ImageView)view.findViewById(R.id.book_image);
         TextView bookTitle=(TextView)view.findViewById(R.id.book_title);
         TextView bookAuthor=(TextView)view.findViewById(R.id.book_author);
-        bookImage.setImageResource(mbook.getImageId());
+        Glide.with(mContext).load(mbook.getImageURL()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(bookImage);
         bookTitle.setText(mbook.getTitle());
         bookAuthor.setText(mbook.getAuthor());
         return view;

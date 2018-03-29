@@ -26,7 +26,7 @@ public class article extends DataSupport{
 
    }
     public String getText() {
-        return text;
+        return this.text;
     }
 
     public void setText(String text) {
@@ -47,23 +47,6 @@ public class article extends DataSupport{
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-
-    public Document getDocument1() {
-        return document1;
-    }
-
-    public void setDocument1(Document document1) {
-        this.document1 = document1;
-    }
-
-    public jsoupGet getJsoupGet1() {
-        return jsoupGet1;
-    }
-
-    public void setJsoupGet1(jsoupGet jsoupGet1) {
-        this.jsoupGet1 = jsoupGet1;
     }
 
 }

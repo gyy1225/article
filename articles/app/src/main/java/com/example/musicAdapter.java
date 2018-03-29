@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -26,14 +27,12 @@ public class musicAdapter extends RecyclerView.Adapter<musicAdapter.ViewHolder> 
         ImageView musicImage;
         TextView musicTitle;
         TextView musicAuthor;
-        TextView musicReader;
         public ViewHolder(View itemView) {
             super(itemView);
             cardView1=(CardView)itemView;
             musicImage=(ImageView)itemView.findViewById(R.id.music_image);
             musicTitle=(TextView)itemView.findViewById(R.id.music_title);
             musicAuthor=(TextView)itemView.findViewById(R.id.music_author);
-            musicReader=(TextView)itemView.findViewById(R.id.music_reader);
         }
     }
     public musicAdapter(List<music> musicList){
@@ -55,8 +54,7 @@ public class musicAdapter extends RecyclerView.Adapter<musicAdapter.ViewHolder> 
         //holder.musicImage.setImageResource(music.getImageId());
         holder.musicTitle.setText(music.getTitle());
         holder.musicAuthor.setText(music.getAuthor());
-        holder.musicReader.setText(music.getReader());
-        Glide.with(mContext).load("http://voice.meiriyiwen.com;icon-uri=http://meiriyiwen.com/favicon.ico");
+        Glide.with(mContext).load(music.getImageURL()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.musicImage);
 
     }
 

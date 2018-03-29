@@ -44,14 +44,6 @@ public class booksFragment extends Fragment {
         return view;
     }
 
-    /*private void initBooks() {
-        book book1=new book("大众读者","斯蒂芬",R.drawable.book1);
-        mbookList.add(book1);
-        book book2=new book("思想的诞生","每日一文精选",R.drawable.book2);
-        mbookList.add(book2);
-        book book3=new book("神赐福的城市","纪伯伦",R.drawable.book3);
-        mbookList.add(book3);
-    }*/
     private void initBooks() {
         new Thread(new Runnable() {
             @Override

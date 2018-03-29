@@ -5,16 +5,18 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/tv_savedTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tv_savedAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"></TextView>
 
 </LinearLayout>
