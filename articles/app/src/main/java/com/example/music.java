@@ -1,19 +1,29 @@
 package com.example;
 
+import java.io.Serializable;
+
 /**
  * Created by ASUS on 2018/3/24.
  */
 
-public class music {
+public class music implements Serializable {
 
     private String title;
     private String author;
-    private String reader;
     private String imageURL;
-    public music(String title,String author,String reader,String imageURL){
+    private String musicURL;
+
+    public String getMusicURL() {
+        return musicURL;
+    }
+
+    public void setMusicURL(String musicURL) {
+        this.musicURL = musicURL;
+    }
+
+    public music(String title, String author, String imageURL){
         this.title=title;
         this.author=author;
-        this.reader=reader;
         this.imageURL=imageURL;
     }
 
@@ -33,14 +43,6 @@ public class music {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getReader() {
-        return reader;
-    }
-
-    public void setReader(String reader) {
-        this.reader = reader;
     }
 
     public String getImageURL() {

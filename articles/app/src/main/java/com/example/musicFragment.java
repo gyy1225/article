@@ -1,5 +1,7 @@
 package com.example;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +33,15 @@ public class musicFragment extends Fragment {
                 case 1:
                     mmusicList1 = (List<music>) msg.obj;
                     mmusicAdapter = new musicAdapter(mmusicList1);
+                    mmusicAdapter.setOnItemClickListener(new musicAdapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int pos) {
+                            music music = mmusicList1.get(pos);
+                            Intent intent7 = new Intent(getContext(), musicPlayActivity.class);
+                            intent7.putExtra("thisMusic", music);
+                            ( (Activity)getActivity()).startActivity(intent7);
+                        }
+                    });
                     LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
                     musicRecyclerView.setLayoutManager(layoutManager);
                     musicRecyclerView.setAdapter(mmusicAdapter);
@@ -45,6 +56,7 @@ public class musicFragment extends Fragment {
         View view = inflater.inflate(R.layout.music_frag, container, false);
         musicRecyclerView  = (RecyclerView) view.findViewById(R.id.rv_music);
         initMusics();
+
         return view;
     }
 

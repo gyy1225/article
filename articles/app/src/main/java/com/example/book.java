@@ -1,10 +1,12 @@
 package com.example;
 
+import java.io.Serializable;
+
 /**
  * Created by ASUS on 2018/3/25.
  */
 
-public class book {
+public class book implements Serializable{
     private String title;
     private String author;
     private String imageURL;

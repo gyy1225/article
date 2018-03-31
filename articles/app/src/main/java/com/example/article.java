@@ -3,6 +3,7 @@ package com.example;
 import org.jsoup.nodes.Document;
 import org.litepal.crud.DataSupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
  * Created by ASUS on 2018/3/25.
  */
 
-public class article extends DataSupport{
+public class article extends DataSupport implements Serializable{
     String text;
     String author;
     String title;

@@ -60,12 +60,12 @@ public class articleFragment extends Fragment {
                     break;
 
                 case 2:
-                    refresh = true;
                     article ranArticle = (article) msg.obj;
                     currentArticle=ranArticle;
+                    mArticleList1.clear();
                     mArticleList1.add(ranArticle);
-                    marticleAdapter = new articleAdapter(getActivity(), R.layout.article_item, mArticleList1);
                     marticleAdapter.notifyDataSetChanged();
+                    //marticleAdapter = new articleAdapter(getActivity(), R.layout.article_item, mArticleList1);
                     mListView.setAdapter(marticleAdapter);
                     break;
                 default:
@@ -83,22 +83,18 @@ public class articleFragment extends Fragment {
         AppCompatActivity mAppCompatActivity = (AppCompatActivity) mActivity;
         Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.toolbar);
         mListView=(ListView)view.findViewById(R.id.lv_article);
-
+        initArticle(0);
         mAppCompatActivity.setSupportActionBar(toolbar);
         FloatingActionButton random = (FloatingActionButton) view.findViewById(R.id.random);
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 refresh=true;
+                initArticle((1));
                 Toast.makeText(getActivity(), "成功刷新", Toast.LENGTH_SHORT).show();
             }
         });
 
-        if (refresh) {
-            initArticle((1));
-        } else {
-            initArticle(0);
-        }
 
         return view;
     }

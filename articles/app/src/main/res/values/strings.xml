@@ -5,4 +5,7 @@
     <string name="title_activity_books">books</string>
     <string name="title_activity_tablayout">TablayoutActivity</string>
     <string name="title_activity_menu">menuActivity</string>
+    <string name="title_activity_local_article">localArticle</string>
+    <string name="title_activity_music_play">musicPlayActivity</string>
+    <string name="title_activity_menu_content">menuContent</string>
 </resources>

@@ -22,7 +22,19 @@
         <activity android:name=".savedArticles" />
         <activity
             android:name=".menuActivity"
-            android:label="@string/title_activity_menu"
+            android:label="目录"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".localArticleActivity"
+            android:label="本地文章"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".musicPlayActivity"
+            android:label="声音"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".menuContentActivity"
+            android:label="阅读"
             android:theme="@style/AppTheme"></activity>
     </application>
 

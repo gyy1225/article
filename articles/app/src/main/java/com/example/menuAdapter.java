@@ -31,10 +31,10 @@ public class menuAdapter extends ArrayAdapter<menu> {
         public View getView(int position, View convertView, ViewGroup parent) {
             menu mMenu=getItem(position);
             View view= LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
-            ImageView menuImage=(ImageView)view.findViewById(R.id.iv_menuImage);
+           // ImageView menuImage=(ImageView)view.findViewById(R.id.iv_menuImage);
             TextView menu=(TextView)view.findViewById(R.id.tv_menu);
             menu.setText(mMenu.getMenu());
-            Glide.with(mContext).load(mMenu.getImageURL()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(menuImage);
+       //     Glide.with(mContext).load(mMenu.getImageURL()).centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(menuImage);
             return view;
         }
     }

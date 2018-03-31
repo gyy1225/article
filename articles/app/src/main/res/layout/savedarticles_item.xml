@@ -7,16 +7,16 @@
     <TextView
         android:layout_marginTop="10dp"
         android:id="@+id/tv_savedTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp" />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/tv_savedAuthor"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"
-        android:layout_marginBottom="10dp"></TextView>
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        android:layout_marginBottom="5dp"></TextView>
 
 </LinearLayout>

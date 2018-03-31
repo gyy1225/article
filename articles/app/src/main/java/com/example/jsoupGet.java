@@ -28,15 +28,17 @@ public class jsoupGet {
 
     public article getArticle(String mURL) {
         // Element AR;
-        String text, author, title;
+        String text="", author, title;
         Document document;
         article article = new article();
         try {
             document = (Document) Jsoup.connect(mURL).get();
             // Elements AR = document.select("div.article_show");
             // AR = document.getElementById("article_show");
-            Elements marticle = document.select("div.articleContent");
-            text = marticle.text();
+            Elements marticle = document.select("div.articleContent").select("p");
+            for (int j=1;j<marticle.size();j++) {
+                text = text + "        "+marticle.get(j).text()+"\n"+"\n";
+            }
             title = document.select("h2.articleTitle").text();
             author = document.select("div.articleAuthorName").text();
             article.setText(text);
@@ -56,15 +58,17 @@ public class jsoupGet {
 
     public article getRanArticle() {
         // Element AR;
-        String text, author, title;
+        String text="", author, title;
         Document document;
         article article = new article();
         try {
-            document = (Document) Jsoup.connect("http://meiriyiwen.com/random").get();
+            document = (Document) Jsoup.connect("https://meiriyiwen.com/random").get();
             // Elements AR = document.select("div.article_show");
             // AR = document.getElementById("article_show");
-            Elements marticle = document.select("div.article_text");
-            text = marticle.text();
+            Elements marticle = document.select("div.article_text").select("p");
+            for (int j=1;j<marticle.size();j++) {
+                text = text + "        "+marticle.get(j).text()+"\n"+"\n";
+            }
             title = document.select("h1").text();
             author = document.select("p.article_author").text();
             article.setText(text);
@@ -85,28 +89,34 @@ public class jsoupGet {
 
     public List<book> getBooks() {
         String author, title;
+        String content=" ";
         Document document;
         List<book> bookList1 = new ArrayList<>();
 
         try {
             document = (Document) Jsoup.connect("http://book.meiriyiwen.com").get();
             Elements articleElements = document.select("table.content").select("tr.books");
+
             for (int i = 0; i < articleElements.size(); i++) {
                 book book = new book();
                 Element articleElement = articleElements.get(i);
                 Elements titleElement = articleElement.select("div.book-name");
                 Elements authorElement = articleElement.select("div.book-author");
                 String imageElement="http://book.meiriyiwen.com" + articleElement.select("a").select("img").attr("src").replace("_250","");
+                String menuElement="http://book.meiriyiwen.com" + articleElement.getElementsByClass("book-link").select("a").attr("href");
                 String bookTitle = titleElement.text();
                 String bookAuthor = authorElement.text();
                 String imageURL=imageElement;
+                String menuURL=menuElement;
                 Log.i("title", bookTitle);
                 book.setTitle(bookTitle);
                 book.setAuthor(bookAuthor);
                 book.setImageURL(imageURL);
+                book.setMenuURL(menuURL);
                 bookList1.add(book);
 
             }
+
             } catch(IOException e){
                 e.printStackTrace();
             }
@@ -122,17 +132,20 @@ public class jsoupGet {
             Elements musicElements = document.getElementsByClass("voice_card");
             for (int i = 0; i < musicElements.size(); i++) {
                 music music=new music();
-                Element articleElement = musicElements.get(i);
-                Elements titleElement = articleElement.select("div.voice_title");
-                Elements authorElement = articleElement.select("div.voice_author");
-                String imageElement="http://voice.meiriyiwen.com" + articleElement.select("a").select("img").attr("src").replace("_250","");
+                Element musicElement = musicElements.get(i);
+                Elements titleElement = musicElement.select("div.voice_title");
+                Elements authorElement = musicElement.select("div.voice_author");
+                String imageElement="http://voice.meiriyiwen.com" + musicElement.select("a").select("img").attr("src").replace("_250","");
+                String musicElement1="http://voice.meiriyiwen.com" + musicElement.getElementsByClass("voice_title").select("a").attr("href");
                 String musicTitle = titleElement.text();
                 String musicAuthor = authorElement.text();
                 imageURL=imageElement;
+                String musicURL=musicElement1;
                 Log.i("title", musicTitle);
                 music.setTitle(musicTitle);
                 music.setAuthor(musicAuthor);
                 music.setImageURL(imageURL);
+                music.setMusicURL(musicURL);
                 musicList1.add(music);
 
             }
