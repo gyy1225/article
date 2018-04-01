@@ -94,93 +94,72 @@ public class jsoupGet {
         List<book> bookList1 = new ArrayList<>();
 
         try {
-            document = (Document) Jsoup.connect("http://book.meiriyiwen.com").get();
-            Elements articleElements = document.select("table.content").select("tr.books");
+            for (int j = 1; j <= 8; j++) {
+                String murl="http://book.meiriyiwen.com/book?page="+j;
+                document = (Document) Jsoup.connect(murl).get();
+                Elements articleElements = document.select("table.content").select("tr.books");
+                for (int i = 0; i < articleElements.size(); i++) {
+                    book book = new book();
+                    Element articleElement = articleElements.get(i);
+                    Elements titleElement = articleElement.select("div.book-name");
+                    Elements authorElement = articleElement.select("div.book-author");
+                    String imageElement = "http://book.meiriyiwen.com" + articleElement.select("a").select("img").attr("src").replace("_250", "");
+                    String menuElement = "http://book.meiriyiwen.com" + articleElement.getElementsByClass("book-link").select("a").attr("href");
+                    String bookTitle = titleElement.text();
+                    String bookAuthor = authorElement.text();
+                    String imageURL = imageElement;
+                    String menuURL = menuElement;
+                    Log.i("title", bookTitle);
+                    book.setTitle(bookTitle);
+                    book.setAuthor(bookAuthor);
+                    book.setImageURL(imageURL);
+                    book.setMenuURL(menuURL);
+                    bookList1.add(book);
 
-            for (int i = 0; i < articleElements.size(); i++) {
-                book book = new book();
-                Element articleElement = articleElements.get(i);
-                Elements titleElement = articleElement.select("div.book-name");
-                Elements authorElement = articleElement.select("div.book-author");
-                String imageElement="http://book.meiriyiwen.com" + articleElement.select("a").select("img").attr("src").replace("_250","");
-                String menuElement="http://book.meiriyiwen.com" + articleElement.getElementsByClass("book-link").select("a").attr("href");
-                String bookTitle = titleElement.text();
-                String bookAuthor = authorElement.text();
-                String imageURL=imageElement;
-                String menuURL=menuElement;
-                Log.i("title", bookTitle);
-                book.setTitle(bookTitle);
-                book.setAuthor(bookAuthor);
-                book.setImageURL(imageURL);
-                book.setMenuURL(menuURL);
-                bookList1.add(book);
+                }
 
             }
-
-            } catch(IOException e){
-                e.printStackTrace();
-            }
-            return bookList1;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bookList1;
         }
     public List<music> getMusics() {
-        String author, title,reader, imageURL;
+        String author, title, reader, imageURL;
         Document document;
         List<music> musicList1 = new ArrayList<>();
 
         try {
-            document = (Document) Jsoup.connect("http://voice.meiriyiwen.com").get();
-            Elements musicElements = document.getElementsByClass("voice_card");
-            for (int i = 0; i < musicElements.size(); i++) {
-                music music=new music();
-                Element musicElement = musicElements.get(i);
-                Elements titleElement = musicElement.select("div.voice_title");
-                Elements authorElement = musicElement.select("div.voice_author");
-                String imageElement="http://voice.meiriyiwen.com" + musicElement.select("a").select("img").attr("src").replace("_250","");
-                String musicElement1="http://voice.meiriyiwen.com" + musicElement.getElementsByClass("voice_title").select("a").attr("href");
-                String musicTitle = titleElement.text();
-                String musicAuthor = authorElement.text();
-                imageURL=imageElement;
-                String musicURL=musicElement1;
-                Log.i("title", musicTitle);
-                music.setTitle(musicTitle);
-                music.setAuthor(musicAuthor);
-                music.setImageURL(imageURL);
-                music.setMusicURL(musicURL);
-                musicList1.add(music);
+            for (int j = 1; j <= 5; j++) {
 
+                String murl="http://voice.meiriyiwen.com/voice/past?page="+j;
+                document = (Document) Jsoup.connect(murl).get();
+                Elements musicElements = document.getElementsByClass("voice_card");
+                for (int i = 0; i < musicElements.size(); i++) {
+                    music music = new music();
+                    Element musicElement = musicElements.get(i);
+                    Elements titleElement = musicElement.select("div.voice_title");
+                    Elements authorElement = musicElement.select("div.voice_author");
+                    String imageElement = "http://voice.meiriyiwen.com" + musicElement.select("a").select("img").attr("src").replace("_250", "");
+                    String musicElement1 = "http://voice.meiriyiwen.com" + musicElement.getElementsByClass("voice_title").select("a").attr("href");
+                    String musicTitle = titleElement.text();
+                    String musicAuthor = authorElement.text();
+                    imageURL = imageElement;
+                    String musicURL = musicElement1;
+                    Log.i("title", musicTitle);
+                    music.setTitle(musicTitle);
+                    music.setAuthor(musicAuthor);
+                    music.setImageURL(imageURL);
+                    music.setMusicURL(musicURL);
+                    musicList1.add(music);
+
+                }
             }
-        } catch(IOException e){
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return musicList1;
     }
-   /* public List<menu> getMenus() {
-        String author, title;
-        Document document;
-        List<book> bookList1 = new ArrayList<>();
-
-        try {
-            document = (Document) Jsoup.connect("http://book.meiriyiwen.com").get();
-            Elements articleElements = document.select("table.content").select("tr.books");
-            for (int i = 0; i < articleElements.size(); i++) {
-                book book = new book();
-                Element articleElement = articleElements.get(i);
-                Elements titleElement = articleElement.select("div.book-name");
-                Elements authorElement = articleElement.select("div.book-author");
-                String imageElement="http://book.meiriyiwen.com" + articleElement.select("a").select("img").attr("src").replace("_250","");
-                String bookTitle = titleElement.text();
-                String bookAuthor = authorElement.text();
-                String imageURL=imageElement;
-                Log.i("title", bookTitle);
-                book.setTitle(bookTitle);
-                book.setAuthor(bookAuthor);
-                book.setImageURL(imageURL);
-                bookList1.add(book);
-
-            }
-        } catch(IOException e){
-            e.printStackTrace();
-        }
-        return bookList1;
-    }*/
+   
     }
