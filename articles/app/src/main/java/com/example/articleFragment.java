@@ -80,6 +80,8 @@ public class articleFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.article_frag, container, false);
         mActivity = getActivity();
+        mArticleList1.clear();
+        refresh=false;
         AppCompatActivity mAppCompatActivity = (AppCompatActivity) mActivity;
         Toolbar toolbar = (Toolbar) mAppCompatActivity.findViewById(R.id.toolbar);
         mListView=(ListView)view.findViewById(R.id.lv_article);
